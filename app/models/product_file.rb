@@ -1,0 +1,2 @@
+class ProductFile < ApplicationRecord
+end

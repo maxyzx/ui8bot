@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  _id: MyString
+  name: MyString
+  card_image: MyString
+  category: one
+  files: one
+
+two:
+  _id: MyString
+  name: MyString
+  card_image: MyString
+  category: two
+  files: two
