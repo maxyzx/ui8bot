@@ -12,6 +12,7 @@ module Crawler
     def params
       {
         email: ENV['EMAIL'],
+        next: "/",
         password: ENV['PASSWORD'],
       }
     end

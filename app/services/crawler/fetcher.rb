@@ -14,6 +14,7 @@ module Crawler
 
     def import_data products
       products.each do |product|
+        next if Product.find_by__id(product['_id']).present?
         params = {
           _id: product['_id'],
           name: product['name'],
