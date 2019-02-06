@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2019_01_31_041839) do
   create_table "product_files", force: :cascade do |t|
     t.string "_id"
     t.string "name"
+    t.boolean "download", default: false
     t.bigint "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -34,6 +35,9 @@ ActiveRecord::Schema.define(version: 2019_01_31_041839) do
   create_table "products", force: :cascade do |t|
     t.string "_id"
     t.string "name"
+    t.string "slug"
+    t.boolean "download", default: false
+    t.boolean "inprogress", default: false
     t.string "card_image"
     t.bigint "category_id"
     t.datetime "created_at", null: false

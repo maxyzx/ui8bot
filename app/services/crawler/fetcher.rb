@@ -2,10 +2,9 @@
 
 module Crawler
   class Fetcher
-    attr_reader :page
 
     def run
-      for page in 1..pages
+      for page in 1..1
         import_data Crawler::Data.new(page).products
       end
     end
@@ -18,7 +17,8 @@ module Crawler
         params = {
           _id: product['_id'],
           name: product['name'],
-          card_image: product['card_image']
+          card_image: product['card_image'],
+          slug: product['slug']
         }
 
         new_product = Product.new(params)
