@@ -4,7 +4,7 @@ module Crawler
   class Fetcher
 
     def run
-      for page in 1..1
+      for page in 1..pages
         import_data Crawler::Data.new(page).products
       end
     end
