@@ -45,7 +45,7 @@ module Crawler
       #   next if download_file?(file)
       #   return {id: file['_id'], name: file['name']}
       # end
-      file = Crawler::File.new(product.slug).files
+      file = Crawler::File.new(product.slug).files.first
       {id: file['_id'], name: file['name']}
     end
 
