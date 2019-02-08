@@ -4,10 +4,7 @@ module Dropbox
     attr_reader :file_name, :category, :link
 
     DROPBOX_API = 'https://api.dropboxapi.com/2/files/save_url'.freeze
-    ROOT_DICT = 'UI8'
-
-
-
+   
     def initialize(file_name, category, link)
       @file_name = file_name
       @category = category
@@ -18,7 +15,7 @@ module Dropbox
       response_status = nil
       
       params = {
-        path: "/#{ROOT_DICT}/#{category}/#{file_name}",
+        path: "/#{ENV['ROOT_DICT']}/#{category}/#{file_name}",
         url: link
       }.to_json
 

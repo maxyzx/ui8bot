@@ -3,4 +3,9 @@ namespace :schedule do
   task download: :environment do
     Crawler::Sync.new.run
   end
+
+  desc 'fetcher data'
+  task fetch: :environment do
+    Crawler::Fetcher.new.run
+  end
 end

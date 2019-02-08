@@ -39,11 +39,14 @@ module Crawler
     end
 
     def file
-      files = Crawler::File.new(product.slug).files
-      files.each do |file|
-        next if download_file?(file)
-        return {id: file['_id'], name: file['name']}
-      end
+      # TODO: Fixed multiple files
+      # files = Crawler::File.new(product.slug).files
+      # files.each do |file|
+      #   next if download_file?(file)
+      #   return {id: file['_id'], name: file['name']}
+      # end
+      file = Crawler::File.new(product.slug).files
+      {id: file['_id'], name: file['name']}
     end
 
     def product
