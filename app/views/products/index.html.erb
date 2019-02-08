@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Products</h1>
+<h1>Products: <%= @totals %>, Download: <%= @total_downloads %></h1>
 
 <table>
   <thead>
@@ -10,7 +10,7 @@
       <th>Card image</th>
       <th>Category</th>
       <th>Files</th>
-      <th colspan="3"></th>
+      <th>Download</th>
     </tr>
   </thead>
 
@@ -23,9 +23,8 @@
           <img src=<%= product.card_image %> alt="Italian Trulli" width="100">
         </td>
         <td><%= product.category.name %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= product.product_files.count %></td>
+        <td><%= product.download %></td>
       </tr>
     <% end %>
   </tbody>
