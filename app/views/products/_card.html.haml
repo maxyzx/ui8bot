@@ -1,0 +1,8 @@
+.card
+  %img.card-img-top{:alt => product.name, :src => product.card_image}
+  .card-body
+    %h5.card-title
+      = product.name
+    .span.file-badge.badge.badge-primary 
+      =  "#{product.product_files.count} files"
+    = render 'products/card/badge_download', download: product.download

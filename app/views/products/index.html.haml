@@ -1,0 +1,6 @@
+%p#notice= notice
+.row.col-md-12
+  - @products.each do |product|
+    .col-md-3
+      = render 'card', product: product
+= paginate @products

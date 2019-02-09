@@ -1,3 +1,18 @@
-// Place all the styles related to the Products controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.card {
+  width: 100%;
+  margin-bottom: 20px;
+  .card-body {
+    .card-title {
+      width: 100%;
+      overflow:hidden; 
+      white-space:nowrap; 
+      text-overflow: ellipsis;
+    }
+  }
+  .download-badge {
+    width: 66px;
+  }
+  .file-badge {
+    width: 46px;
+  }
+}
