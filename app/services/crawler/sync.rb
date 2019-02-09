@@ -21,9 +21,11 @@ module Crawler
         product.update(inprogress: false)
         product.update(download: true)
       end
+      product.update(download_at: Time.now)
     end
 
     def link_download
+      # "https://s3.amazonaws.com/local-market-frontend-staging/images/Filetest.zip"
       request_download = RestClient.get("#{DOWNLOAD_URL}/#{product._id}/#{file._id}", {cookie: cookies, user_agent: USER_AGENT})
       JSON.parse(request_download.body)['signedLink']
     end

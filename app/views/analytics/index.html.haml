@@ -11,7 +11,7 @@
             .h3 Total #{@total_products} products
         .col-4.card-analytics
           .row.title.justify-content-center.align-self-center
-            .h3 Download #{@total_downloads} products
+            .h3 Download #{@product_downloads.size} products
         .col-4.card-analytics
           .row.title.justify-content-center.align-self-center
             .h3 #{@estimate_month_time_to_download} days left
@@ -21,14 +21,17 @@
           %thead
             %tr
               %th #
-              %th Header
-              %th Header
-              %th Header
-              %th Header
+              %th Name
+              %th Files
+              %th Download at
           %tbody
+          - @product_downloads.each do |product|
             %tr
-              %td 1,001
-              %td Lorem
-              %td ipsum
-              %td dolor
-              %td sit
+              %td 
+                = product._id
+              %td 
+                = product.name
+              %td 
+                = product.product_files.count
+              %td 
+                = product.download_at
