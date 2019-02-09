@@ -1,0 +1,6 @@
+.sidebar-sticky
+  %ul.nav.flex-column
+    - @categories.each do |category|
+      %li.nav-item
+        %a.nav-link{:href => "#"}
+          = category.name

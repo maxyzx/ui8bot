@@ -1,4 +1,15 @@
-%nav.navbar.navbar-light.bg-light
-  %a.navbar-brand{:href => "#"}
-    %img.d-inline-block.align-top{:alt => "", :height => "30", :src => "", :width => "30"}/
-    Themes Admin Site
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  %a.navbar-brand{:href => root_path} Bot
+  %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+    %span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    %ul.navbar-nav.mr-auto
+      %li.nav-item
+        %a.nav-link{:href => products_path}
+          Product
+      %li.nav-item
+        %a.nav-link{:href => analytics_path}
+          Analytics
+    %form.form-inline.my-2.my-lg-0
+      %input.form-control.mr-sm-2{"aria-label" => "Search", :placeholder => "Search", :type => "search"}/
+      %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search
