@@ -4,7 +4,7 @@ module Crawler
   class Fetcher
 
     def run
-      for page in 1..pages
+      for page in 1..1
         import_data Crawler::Data.new(page).products
       end
     end
@@ -13,18 +13,30 @@ module Crawler
 
     def import_data products
       products.each do |product|
-        next if Product.find_by__id(product['_id']).present?
-        params = {
-          _id: product['_id'],
-          name: product['name'],
-          card_image: product['card_image'],
-          slug: product['slug']
-        }
+        if Product.find_by__id(product['_id']).present?
+          update_product_files product
+        else
+          params = {
+            _id: product['_id'],
+            name: product['name'],
+            card_image: product['card_image'],
+            slug: product['slug']
+          }
+          new_product = Product.new(params)
+          new_product.category = initialize_category product
+          new_product.product_files = initialize_file product
+          new_product.save
+        end
+      end
+    end
 
-        new_product = Product.new(params)
-        new_product.category = initialize_category product
-        new_product.product_files = initialize_file product
-        new_product.save
+    def update_product_files product
+      current_product = Product.find_by__id(product['_id'])
+      return if current_product.download
+      product['files'].each do |file|
+        current_product.product_files.destroy_all
+        current_product.product_files = initialize_file product
+        current_product.save
       end
     end
 

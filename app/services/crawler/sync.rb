@@ -10,15 +10,13 @@ module Crawler
 
     private
 
-
-
     def sync_dropbox?
       Dropbox::DropboxService.new(file_name, category, link_download).save_url
     end
 
     def post_process
       product.update(inprogress: true)
-      product.product_files.where(name: file[:name]).first.update(download: true)
+      product.product_files.where(name: file.name).first.update(download: true)
       if !product.product_files.where(download: false).present?
         product.update(inprogress: false)
         product.update(download: true)
@@ -26,12 +24,12 @@ module Crawler
     end
 
     def link_download
-      request_download = RestClient.get("#{DOWNLOAD_URL}/#{product._id}/#{file[:id]}", {cookie: cookies, user_agent: USER_AGENT})
+      request_download = RestClient.get("#{DOWNLOAD_URL}/#{product._id}/#{file._id}", {cookie: cookies, user_agent: USER_AGENT})
       JSON.parse(request_download.body)['signedLink']
     end
 
     def file_name
-      "#{product.name}/#{file[:name]}"
+      "#{product.name}/#{file.name}"
     end
 
     def category
@@ -39,14 +37,10 @@ module Crawler
     end
 
     def file
-      # TODO: Fixed multiple files
-      # files = Crawler::File.new(product.slug).files
-      # files.each do |file|
-      #   next if download_file?(file)
-      #   return {id: file['_id'], name: file['name']}
-      # end
-      file = Crawler::File.new(product.slug).files.first
-      {id: file['_id'], name: file['name']}
+      product.product_files.each do |file|
+        next if file.download
+        return file
+      end
     end
 
     def product
@@ -56,11 +50,6 @@ module Crawler
         else
           Product.where(download: false).first
         end
-    end
-
-    def download_file?(file)
-      download_file = product.product_files.where(name: file['name']).first
-      download_file.present? && download_file.download
     end
 
     def inprogress_download?
