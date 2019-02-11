@@ -6,6 +6,7 @@ module Crawler
       @page = page
     end
 
+
     CATEGORY_URL = 'https://ui8.net/api/categories/all'.freeze
 
     def products
