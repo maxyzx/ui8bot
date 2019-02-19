@@ -27,7 +27,14 @@ module Crawler
     def link_download
       # "https://s3.amazonaws.com/local-market-frontend-staging/images/Filetest.zip"
       request_download = RestClient.get("#{DOWNLOAD_URL}/#{product._id}/#{file._id}", {cookie: cookies, user_agent: USER_AGENT})
+    
+      puts "-----------------------------------"
+      puts "Crawler::Sync - link_download"
+      puts request_download.body
+      puts "-----------------------------------"
+
       JSON.parse(request_download.body)['signedLink']
+    
     end
 
     def file_name
