@@ -11,7 +11,8 @@ module Crawler
     private
 
     def sync_dropbox?
-      Dropbox::DropboxService.new(file_name, category, link_download).save_url
+      # Dropbox::DropboxService.new(file_name, category, link_download).save_url
+      true
     end
 
     def post_process
@@ -22,6 +23,11 @@ module Crawler
         product.update(download: true)
       end
       product.update(download_at: Time.now)
+      send_notification_email product
+    end
+
+    def send_notification_email product
+      ProductMailer.notify_email(product).deliver
     end
 
     def link_download
