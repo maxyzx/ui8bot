@@ -11,8 +11,7 @@ module Crawler
     private
 
     def sync_dropbox?
-      # Dropbox::DropboxService.new(file_name, category, link_download).save_url
-      true
+      Dropbox::DropboxService.new(file_name, category, link_download).save_url
     end
 
     def post_process
