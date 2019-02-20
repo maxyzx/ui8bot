@@ -3,6 +3,8 @@
   .card-body
     %h5.card-title
       = product.name
+    .p 
+      = product._id
     .span.file-badge.badge.badge-primary 
       =  "#{product.product_files.count} files"
     = render 'products/card/badge_download', download: product.download
