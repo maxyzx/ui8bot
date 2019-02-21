@@ -19,11 +19,7 @@ module Crawler
 
     private
     def response
-      @response ||= RestClient.get("#{CATEGORY_URL}?page=#{page}", {cookie: cookies})
-    end
-
-    def cookies
-      @cookies ||= Crawler::Session.new.cookies
+      @response ||= RestClient.get("#{CATEGORY_URL}?page=#{page}")
     end
   end
 end

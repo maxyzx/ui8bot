@@ -58,12 +58,12 @@ module Crawler
     end
 
     def product
-      @product ||= 
-        if inprogress_download?
-          Product.where(inprogress: true).first
-        else
-          Product.where(download: false).first
-        end
+      @product ||= Product.where(download: false, multiple_file: false, feature: true).first
+        # if inprogress_download?
+        #   Product.where(inprogress: true).first
+        # else
+        #   Product.where(download: false, multiple_file: false, feature: true).first
+        # end
     end
 
     def inprogress_download?

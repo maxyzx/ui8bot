@@ -34,9 +34,9 @@ module Crawler
 
     def update_exist_product product
       current_product = Product.find_by__id(product['_id'])
-      current_product.update(feature: product['featured'])
-
       return if current_product.download
+      
+      current_product.update(feature: product['featured'])
       current_product.update(multiple_file: current_product.product_files.count > 1)
 
       product['files'].each do |file|
