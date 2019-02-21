@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_09_110510) do
+ActiveRecord::Schema.define(version: 2019_02_21_085141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,12 @@ ActiveRecord::Schema.define(version: 2019_02_09_110510) do
   create_table "categories", force: :cascade do |t|
     t.string "_id"
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cookies", force: :cascade do |t|
+    t.string "cookies"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -43,6 +49,8 @@ ActiveRecord::Schema.define(version: 2019_02_09_110510) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "download_at"
+    t.boolean "multiple_file"
+    t.boolean "feature"
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
