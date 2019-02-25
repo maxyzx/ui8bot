@@ -13,12 +13,15 @@ module Dropbox
 
     def save_url
       response_status = nil
-      
+
+      puts "path------------------------------------------"        
+      puts "/#{ENV['ROOT_DICT']}/#{category}/#{file_name}"
+      puts "----------------------------------------------------------"
+
       params = {
         path: "/#{ENV['ROOT_DICT']}/#{category}/#{file_name}",
         url: link
       }.to_json
-
 
       puts "Link download------------------------------------------"        
       puts link
