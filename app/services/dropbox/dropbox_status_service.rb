@@ -15,6 +15,7 @@ module Dropbox
       }.to_json
       
       RestClient.post(DROPBOX_STATUS_API, params, headers) do |response, request, result|
+        return "{\".tag\": \"failed\", \"failed\": {\".tag\": \"not_found\"}}" unless response.body.present?
         JSON.parse(response.body)
       end
     end
