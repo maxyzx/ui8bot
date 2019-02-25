@@ -19,7 +19,7 @@ module Dropbox
       puts "----------------------------------------------------------"
 
       params = {
-        path: "/#{ENV['ROOT_DICT']}/#{category}/#{file_name}",
+        path: "/#{ENV['ROOT_DICT']}/#{category}",
         url: link
       }.to_json
 
