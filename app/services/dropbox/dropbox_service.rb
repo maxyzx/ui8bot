@@ -15,7 +15,7 @@ module Dropbox
       response_status = nil
 
       puts "path------------------------------------------"        
-      puts "/#{ENV['ROOT_DICT']}/#{category}/#{file_name}"
+      puts "/#{ENV['ROOT_DICT']}/#{category}/#{file_name}.zip"
       puts "----------------------------------------------------------"
 
       params = {
