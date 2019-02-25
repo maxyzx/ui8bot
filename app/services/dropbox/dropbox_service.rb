@@ -23,6 +23,11 @@ module Dropbox
         status = "in_progress"
         while true
           response_status = Dropbox::DropboxStatusService.new(JSON.parse(response.body)["async_job_id"]).check
+          
+          puts "----------------------------------------------------------"        
+          puts response.body
+          puts "----------------------------------------------------------"        
+          
           status = response_status[".tag"]
           break if status == "failed" || status == "complete"
           sleep 10
