@@ -19,14 +19,20 @@ module Dropbox
         url: link
       }.to_json
 
+
+      puts "Link download------------------------------------------"        
+      puts link
+      puts "----------------------------------------------------------"
+
       RestClient.post(DROPBOX_API, params, headers) do |response, request, result|
         status = "in_progress"
+
+        puts "DROPBOX RESPONSE------------------------------------------"        
+        puts response.body
+        puts "----------------------------------------------------------"   
+
         while true
-          response_status = Dropbox::DropboxStatusService.new(JSON.parse(response.body)["async_job_id"]).check
-          
-          puts "----------------------------------------------------------"        
-          puts response.body
-          puts "----------------------------------------------------------"        
+          response_status = Dropbox::DropboxStatusService.new(JSON.parse(response.body)["async_job_id"]).check     
           
           status = response_status[".tag"]
           break if status == "failed" || status == "complete"
