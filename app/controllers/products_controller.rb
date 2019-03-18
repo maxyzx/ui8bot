@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.where(feature: true).order(:created_at).page params[:page]
+    @products = Product.where(feature: false).order(:created_at).page params[:page]
     @totals = Product.all.size
     @total_downloads = Product.where(download: true).size
   end
