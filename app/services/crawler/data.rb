@@ -6,11 +6,10 @@ module Crawler
       @page = page
     end
 
-
     CATEGORY_URL = 'https://ui8.net/api/categories/all'.freeze
 
     def products
-      @products ||= JSON.parse(response.body)['data']['products'].select{|b| b['name'] != 'Unlimited Pass'}
+      @products ||= JSON.parse(response.body)['data']
     end
 
     def meta
@@ -18,6 +17,7 @@ module Crawler
     end
 
     private
+
     def response
       @response ||= RestClient.get("#{CATEGORY_URL}?page=#{page}")
     end

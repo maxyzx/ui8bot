@@ -22,12 +22,6 @@ ActiveRecord::Schema.define(version: 2019_02_21_085141) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "cookies", force: :cascade do |t|
-    t.string "cookies"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "product_files", force: :cascade do |t|
     t.string "_id"
     t.string "name"
