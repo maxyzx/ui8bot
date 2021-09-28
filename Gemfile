@@ -14,7 +14,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rest-client', '~> 2.0', '>= 2.0.2'
-gem 'nokogiri', '~> 1.10', '>= 1.10.1'
+gem 'nokogiri', '~> 1.12'
 gem 'dotenv-rails', '~> 2.4.0'
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'pry', '~> 0.12.2'
